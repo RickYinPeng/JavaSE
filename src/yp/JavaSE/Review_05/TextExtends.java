@@ -12,14 +12,10 @@ public class TextExtends {
         stu.name="尹鹏";
         stu.height=180;
         stu.rest();
-
         Student stu2 = new Student("嘻嘻",180,"计算机");
-
         System.out.println(stu instanceof Student);
         System.out.println(stu2 instanceof Person);
-
     }
-
 }
 class Person /*extends Object*/{
     String name;
