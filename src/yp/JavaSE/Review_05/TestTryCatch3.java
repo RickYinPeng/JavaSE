@@ -19,6 +19,7 @@ package yp.JavaSE.Review_05;
 public class TestTryCatch3 {
     public static String output = "";
     public static String  foo(int i){
+        Integer integer;
         try {
             int j = 100/0;
             if (i == 0) {
@@ -37,6 +38,15 @@ public class TestTryCatch3 {
         String foo = t.foo(0);
         System.out.println(foo);
         System.out.println(t.output);
+        Integer.valueOf(10);
+
+     /*   Integer i = Integer.valueOf(20);
+        Integer x = 20;
+        System.out.println(i==x);
+
+        Integer f = 300;
+        Integer j = Integer.valueOf(300);
+        System.out.println(f==j);*/
     }
 
 }
