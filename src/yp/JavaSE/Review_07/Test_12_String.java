@@ -24,6 +24,5 @@ public class Test_12_String {
         StringBuffer s = new StringBuffer();
 
         s.append("a");
-
     }
 }
