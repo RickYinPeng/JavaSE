@@ -5,7 +5,7 @@ import java.util.Vector;
 /**
  * @author RickYinPeng
  * @ClassName Test_05_Vector
- * @Description
+ * @Description 底层使用Object数组来实现
  * @date 2019/1/23/9:15
  */
 public class Test_05_Vector {
