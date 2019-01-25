@@ -18,8 +18,6 @@ public class Test_03_FilePath {
         File src = new File(path);
         System.out.println(src.getAbsolutePath());
 
-        
-
         /**
          * 相对路径
          */
