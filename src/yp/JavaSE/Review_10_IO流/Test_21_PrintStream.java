@@ -3,7 +3,7 @@ package yp.JavaSE.Review_10_IO流;
 import java.io.PrintStream;
 
 /**
- * @author RickYinPeng
+ * @author RickYinPen
  * @ClassName Test_21_Print
  * @Description
  * @date 2019/1/26/17:06
