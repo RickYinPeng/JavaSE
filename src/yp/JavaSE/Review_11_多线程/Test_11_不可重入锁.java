@@ -7,4 +7,7 @@ package yp.JavaSE.Review_11_多线程;
  * @date 2019/1/27/16:33
  */
 public class Test_11_不可重入锁 {
+    public static void main(String[] args) {
+        System.out.println("你在哪里啊");
+    }
 }
