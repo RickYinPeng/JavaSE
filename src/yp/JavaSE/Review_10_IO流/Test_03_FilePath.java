@@ -10,7 +10,7 @@ import java.io.File;
  */
 public class Test_03_FilePath {
     public static void main(String[] args) {
-        String path = "E:/IdeaWorpace/Java_SE/gg.txt";
+        String path = "E:/IdeaWorpace/Java_SE/1.txt";
 
         /**
          * 绝对路径
@@ -22,7 +22,7 @@ public class Test_03_FilePath {
          * 相对路径
          */
         System.out.println(System.getProperty("user.dir"));
-        src = new File("gg.txt");
+        src = new File("1.txt");
         System.out.println(src.getAbsolutePath());
     }
 }

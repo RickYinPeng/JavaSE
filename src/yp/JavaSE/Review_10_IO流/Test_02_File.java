@@ -11,7 +11,7 @@ import java.io.File;
 public class Test_02_File {
 
     public static void main(String[] args) {
-        String path = "E:/IdeaWorpace/Java_SE/gg.txt";
+        String path = "E:/IdeaWorpace/Java_SE/1.txt";
 
         /**
          * 1：构造File对象
@@ -22,7 +22,7 @@ public class Test_02_File {
         /**
          * 2：构造File对象
          */
-        src = new File("E:/IdeaWorpace/Java_SE/gg.txt");
+        src = new File("E:/IdeaWorpace/Java_SE/1.txt");
     }
 
 

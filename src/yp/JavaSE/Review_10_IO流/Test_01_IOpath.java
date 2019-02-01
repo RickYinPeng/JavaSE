@@ -14,7 +14,7 @@ public class Test_01_IOpath {
      * @param args
      */
     public static void main(String[] args) {
-        String path = "E:\\IdeaWorpace\\Java_SE\\gg.txt";
+        String path = "E:\\IdeaWorpace\\Java_SE\\1.txt";
 
         /**
          * 输出：\
@@ -25,7 +25,7 @@ public class Test_01_IOpath {
          * 建议
          * 1：使用 /
          */
-        path = "E:/IdeaWorpace/Java_SE/gg.txt";
+        path = "E:/IdeaWorpace/Java_SE/1.txt";
         System.out.println(path);
 
         /**

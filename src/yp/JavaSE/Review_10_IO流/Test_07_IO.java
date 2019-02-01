@@ -21,7 +21,7 @@ public class Test_07_IO {
         /**
          * 1:创建源
          */
-        File src = new File("gg.txt");
+        File src = new File("1.txt");
         try {
             /**
              * 2:选择流

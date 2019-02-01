@@ -13,7 +13,7 @@ public class Test_16_BufferedInputStream {
         /**
          * 1:创建源
          */
-        File src = new File("gg.txt");
+        File src = new File("1.txt");
         BufferedInputStream bufferedInputStream = null;
         try {
             /**

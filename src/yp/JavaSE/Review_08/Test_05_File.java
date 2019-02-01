@@ -28,7 +28,7 @@ public class Test_05_File {
          */
         System.out.println(System.getProperty("user.dir"));
 
-        File f2 = new File("gg.txt");
+        File f2 = new File("1.txt");
         f2.createNewFile();
 
 

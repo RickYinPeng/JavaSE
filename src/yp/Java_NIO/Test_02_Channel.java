@@ -5,11 +5,18 @@ import org.junit.Test;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
+import java.nio.charset.CharacterCodingException;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetDecoder;
+import java.nio.charset.CharsetEncoder;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.SortedMap;
 
 /**
  * 一、通道（Channel）：用于源节点与目标节点的一个连接。在Java NIO中负责缓冲区中数据的传输。
@@ -35,8 +42,114 @@ import java.nio.file.StandardOpenOption;
  * 四、通道之间的数据传输
  *      transferFrom()
  *      transferTo()
+ * 五、分散（Scatter）与聚集（Gather）
+ *      分散读取（Scattering Reads）：将通道中的数据分散到多个缓冲区中
+ *      聚集写入（Gathering Writes）：将多个缓冲区中的数据聚集到通道中
+ * 六、字符集：Charset
+ *      编码：字符集 -> 字节数组
+ *      解码：字节数组 -> 字符串
  */
 public class Test_02_Channel {
+
+    /**
+     *
+     */
+    @Test
+    public void test6() throws CharacterCodingException {
+        /**
+         * 获取某种字符集
+         */
+        Charset gbk = Charset.forName("GBK");
+
+        /**
+         * 获取编码器
+         */
+        CharsetEncoder encoder = gbk.newEncoder();
+
+        /**
+         * 获取解码器
+         */
+        CharsetDecoder decoder = gbk.newDecoder();
+
+        CharBuffer charBuffer = CharBuffer.allocate(1024);
+        charBuffer.put("尚硅谷威武！");
+        charBuffer.flip();
+
+        /**
+         * 编码
+         */
+        ByteBuffer byteBuffer = encoder.encode(charBuffer);
+
+        for(int i = 0;i<12;i++){
+            System.out.println(byteBuffer.get());
+        }
+        /**
+         * 解码
+         */
+        byteBuffer.flip();
+        CharBuffer decode = decoder.decode(byteBuffer);
+        System.out.println(decode.toString());
+        System.out.println("-----");
+
+    }
+
+
+    /**
+     * 查看有多少种字符集
+     */
+    @Test
+    public void test5(){
+        SortedMap<String, Charset> map = Charset.availableCharsets();
+        for (String s : map.keySet()) {
+            Charset charset = map.get(s);
+            System.out.println(s+"="+charset);
+        }
+    }
+
+
+    //分散和聚集
+    @Test
+    public void test4() throws IOException {
+        RandomAccessFile randomAccessFile = new RandomAccessFile("1.txt","rw");
+
+        /**
+         * 1、获取通道
+         */
+        FileChannel channel = randomAccessFile.getChannel();
+
+        /**
+         * 2、分配指定大小的缓冲区
+         */
+        ByteBuffer buf1 = ByteBuffer.allocate(100);
+        ByteBuffer buf2 = ByteBuffer.allocate(1024);
+
+        /**
+         * 3、分散读取
+         */
+        ByteBuffer[] bufs = {buf1,buf2};
+        channel.read(bufs);
+
+        for (ByteBuffer buf : bufs) {
+            buf.flip();
+        }
+        System.out.println(new String(bufs[0].array(),0,bufs[0].limit()));
+        System.out.println("--------------------------------");
+        System.out.println(new String(bufs[1].array(),0,bufs[1].limit()));
+
+        /**
+         * 4、聚集写入
+         */
+        RandomAccessFile accessFile = new RandomAccessFile("2.txt","rw");
+
+        FileChannel channel1 = accessFile.getChannel();
+
+        channel.write(bufs);
+
+        channel1.close();
+        channel.close();
+
+    }
+
 
     /**
      * 通道之间的数据传输（直接缓冲区）
@@ -98,8 +211,6 @@ public class Test_02_Channel {
         outChannel.close();
 
     }
-
-
     /**
      * 1、利用通道完成文件的复制（非直接缓冲区）
      */

@@ -13,7 +13,7 @@ public class Test_10_Copy {
         /**
          * 源头
          */
-        File src = new File("gg.txt");
+        File src = new File("1.txt");
         /**
          * 拷贝的目的地
          */
