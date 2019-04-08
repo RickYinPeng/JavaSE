@@ -12,8 +12,11 @@ public class Test_04_FileDir {
     public static void main(String[] args) {
         File src = new File("E:\\IdeaWorpace\\Java_SE");
         //printName(src,0);
-        countFile(src);
-        System.out.println(len);
+        /*countFile(src);
+        System.out.println(len);*/
+        printName(src,0);
+
+
     }
 
     /**

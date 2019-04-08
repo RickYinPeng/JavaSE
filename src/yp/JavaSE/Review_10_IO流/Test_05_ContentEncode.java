@@ -11,7 +11,6 @@ import java.io.UnsupportedEncodingException;
 public class Test_05_ContentEncode {
     public static void main(String[] args) throws UnsupportedEncodingException {
         String msg = "性命生命使命";
-
         /**
          * 编码：字节数组
          * 默认使用工程的字符集
@@ -27,6 +26,5 @@ public class Test_05_ContentEncode {
 
         byte[] bytes3 = msg.getBytes("GBK");
         System.out.println(bytes3.length);
-
     }
 }
