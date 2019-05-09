@@ -57,8 +57,6 @@ public class Test_01_Buffer {
          * 判断该缓冲区是否是直接缓冲区
          */
         System.out.println(buf.isDirect());
-
-
     }
 
 
@@ -66,10 +64,16 @@ public class Test_01_Buffer {
     public void test2(){
         String str = "abcde";
 
+        /**
+         * 非直接缓冲区
+         */
         ByteBuffer buf = ByteBuffer.allocate(1024);
 
         buf.put(str.getBytes());
 
+        /**
+         * 调用flip之后，读写指针指到缓存头部，并且设置了最多只能读出之前写入的数据长度(而不是整个缓存的容量大小)
+         */
         buf.flip();
 
         byte[] dst = new byte[buf.limit()];
@@ -80,6 +84,8 @@ public class Test_01_Buffer {
 
         /**
          * mark()标记一下
+         * 调用buffer.remak()时，会将当前的position值赋给remak属性，
+         * 保存当前操作的状态，然后get继续执行，当调用buffer.reset（）时，会将之前当前的remark值赋予position,
          */
         buf.mark();
 
@@ -104,8 +110,6 @@ public class Test_01_Buffer {
              */
             System.out.println(buf.remaining());
         }
-
-
     }
 
 
@@ -175,6 +179,5 @@ public class Test_01_Buffer {
          * 不信咱们可以取一下，打印出来
          */
         System.out.println((char)buf.get());
-
     }
 }

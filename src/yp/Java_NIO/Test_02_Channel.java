@@ -133,7 +133,7 @@ public class Test_02_Channel {
             buf.flip();
         }
         System.out.println(new String(bufs[0].array(),0,bufs[0].limit()));
-        System.out.println("--------------------------------");
+        System.out.println("--------------asd------------------");
         System.out.println(new String(bufs[1].array(),0,bufs[1].limit()));
 
         /**
@@ -197,7 +197,6 @@ public class Test_02_Channel {
         /**
          * 注意：直接缓冲区的方式只有ByteBuffer支持，就是只能是字节
          */
-
         MappedByteBuffer outMappedBuf = outChannel.map(FileChannel.MapMode.READ_WRITE, 0, inChannel.size());
 
         /**

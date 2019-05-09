@@ -12,8 +12,11 @@ import java.util.*;
  */
 public class Test_11_Iterator {
     public static void main(String[] args) {
-        //testIteratorList();
+        testIteratorList();
         //testIteratorSet();
+
+
+
     }
 
     /**
@@ -24,6 +27,8 @@ public class Test_11_Iterator {
         list.add("aa");
         list.add("bb");
         list.add("cc");
+        Iterator<String> iteratora = list.iterator();
+
 
         for (Iterator<String> iterator = list.iterator(); iterator.hasNext(); ) {
             /**
