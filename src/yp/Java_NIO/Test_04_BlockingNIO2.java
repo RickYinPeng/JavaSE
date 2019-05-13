@@ -87,8 +87,5 @@ public class Test_04_BlockingNIO2 {
         outChannel.close();
         sChannel.close();
         ssChannel.close();
-
-
     }
-
 }
