@@ -139,6 +139,8 @@ public class Test_01_Buffer {
 
         /**
          * 3、切换成读取数据的模式
+         *    通过buffer.flip();这个语句，就能把buffer的当前位置更改为buffer缓冲区的第一个位置。通过buffer.flip();
+         *    这个语句，就能把buffer的当前位置更改为buffer缓冲区的第一个位置。
          */
         buf.flip();
         System.out.println("----------------flip()------------------");
