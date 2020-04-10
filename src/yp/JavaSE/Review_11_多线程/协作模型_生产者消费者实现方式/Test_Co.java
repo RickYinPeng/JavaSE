@@ -17,7 +17,7 @@ public class Test_Co {
 /**
  * 生产者
  */
-class Productor extends Thread{
+class Productor extends Thread {
 
     SynContainer container;
 
@@ -28,8 +28,8 @@ class Productor extends Thread{
     @Override
     public void run() {
         //生产
-        for(int i = 0;i<100;i++){
-            System.out.println("生产-->"+i+"个馒头");
+        for (int i = 0; i < 100; i++) {
+            System.out.println("生产-->" + i + "个馒头");
             container.push(new Steamedbun(i));
         }
     }
@@ -38,7 +38,7 @@ class Productor extends Thread{
 /**
  * 消费者
  */
-class Consumer extends Thread{
+class Consumer extends Thread {
 
     SynContainer container;
 
@@ -50,8 +50,8 @@ class Consumer extends Thread{
     @Override
     public void run() {
         //消费
-        for(int i = 0;i<100;i++){
-            System.out.println("消费-->"+container.pop().id+"个馒头");
+        for (int i = 0; i < 100; i++) {
+            System.out.println("消费-->" + container.pop().id + "个馒头");
         }
     }
 }
@@ -59,18 +59,19 @@ class Consumer extends Thread{
 /**
  * 缓冲区
  */
-class SynContainer{
+class SynContainer {
     Steamedbun[] buns = new Steamedbun[10];
     int count;//计数器
+
     /**
      * 存储 --- 生产
      */
-    public synchronized void push(Steamedbun bun){
+    public synchronized void push(Steamedbun bun) {
         /**
          * 何时生产--->容器中是否有空间
          * 容器满了就只能等待
          */
-        if(count==buns.length){
+        if (count == buns.length) {
             try {
                 this.wait();
             } catch (InterruptedException e) {
@@ -88,12 +89,12 @@ class SynContainer{
     /**
      * 获取 --- 消费
      */
-    public synchronized Steamedbun pop(){
+    public synchronized Steamedbun pop() {
         /**
          * 何时消费--->容器中是否存在数据
          * 没有数据就只能等待
          */
-        if(count==0){
+        if (count == 0) {
             try {
                 this.wait();
             } catch (InterruptedException e) {
@@ -113,7 +114,7 @@ class SynContainer{
 /**
  * 馒头
  */
-class Steamedbun{
+class Steamedbun {
     int id;
 
     public Steamedbun(int id) {
